@@ -13,6 +13,9 @@
     "tags": [
         {
             "name": "health"
+        },
+        {
+            "name": "seller"
         }
     ],
     "paths": {
@@ -29,6 +32,165 @@
                     "200": {
                         "description": "ok"
                     }
+                }
+            }
+        },
+        "/seller/sign-up": {
+            "post": {
+                "tags": [
+                    "seller"
+                ],
+                "summary": "Endpoint to regiser a seller",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Seller"
+                        }
+                    }
+                ]
+            }
+        },
+        "/seller/login": {
+            "post": {
+                "tags": [
+                    "seller"
+                ],
+                "summary": "Endpoint for Seller to login",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                ]
+            }
+        },
+        "/seller/update/{id}": {
+            "patch": {
+                "tags": [
+                    "seller"
+                ],
+                "summary": "Endpoint to Update a seller",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token in form of: Bearer Token",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID of user to be updated",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request Object",
+                        "schema": {
+                            "$ref": "#/definitions/Seller"
+                        }
+                    }
+                ]
+            }
+        },
+        "/seller/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "seller"
+                ],
+                "summary": "Endpoint to delete a seller",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token in form of: Bearer Token",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID of user to be deleted",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Seller": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Login": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         }

@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const { invalidTokensModel } = require('../components/miscellaneous/miscellaneous.model');
+const { sellerModel } = require('../components/seller/seller.model');
 require('dotenv').config();
 
 const sequelize = new Sequelize(
@@ -26,8 +27,11 @@ const db = {};
 db.sequelize = sequelize;
 
 const InvalidToken = invalidTokensModel(sequelize);
+const Seller = sellerModel(sequelize);
 
 db.InvalidToken = InvalidToken;
+db.Seller = Seller;
+
 
 sequelize.sync();
 

@@ -20,7 +20,6 @@
     "joi": "^17.6.3",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
-    "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.23.2",
     "swagger-jsdoc": "^6.2.5",
@@ -28,6 +27,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "morgan": "^1.10.0"
   }
 }
