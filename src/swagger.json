@@ -1,0 +1,36 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Node JS based Express powered API for Book Store",
+        "version": "1.0.0",
+        "title": "Book Store"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:3001",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "health"
+        }
+    ],
+    "paths": {
+        "/health/ping": {
+            "get": {
+                "tags": [
+                    "health"
+                ],
+                "summary": "Mock endpoint to test API response",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            }
+        }
+    }
+}
