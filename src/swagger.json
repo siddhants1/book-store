@@ -16,6 +16,9 @@
         },
         {
             "name": "seller"
+        },
+        {
+            "name": "book"
         }
     ],
     "paths": {
@@ -168,6 +171,42 @@
                     }
                 ]
             }
+        },
+        "/book/add": {
+            "post": {
+                "tags": [
+                    "book"
+                ],
+                "summary": "Endpoint to add a book",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token in form of: Bearer Token",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    }
+                ]
+            }
         }
     },
     "definitions": {
@@ -191,6 +230,16 @@
                 },
                 "password": {
                     "type": "string"
+                }
+            }
+        },
+        "Book": {
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
                 }
             }
         }
