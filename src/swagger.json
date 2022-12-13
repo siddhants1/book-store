@@ -22,6 +22,9 @@
         },
         {
             "name": "customer"
+        },
+        {
+            "name": "order"
         }
     ],
     "paths": {
@@ -330,6 +333,60 @@
                     }
                 ]
             }
+        },
+        "/order/place": {
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Endpoint for customer to place an order",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token in form of: Bearer Token",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request Object",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    }
+                ]
+            }
+        },
+        "/order/get": {
+            "get": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Endpoint to get all orders",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error message"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -378,6 +435,16 @@
                     "type": "string"
                 },
                 "price": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Order": {
+            "properties": {
+                "BookId": {
+                    "type": "integer"
+                },
+                "CustomerId": {
                     "type": "integer"
                 }
             }
