@@ -1,4 +1,5 @@
 const { bookRouter } = require('../components/book/book.router');
+const { customerRouter } = require('../components/customer/customer.router');
 const { healthRouter } = require('../components/health/health.router');
 const { sellerRouter } = require('../components/seller/seller.router');
 
@@ -7,6 +8,7 @@ const routingMiddleware = (app) => {
 
     app.use('/seller', sellerRouter);
     app.use('/book', bookRouter);
+    app.use('/customer', customerRouter);
 
     // 404 handler
     app.use((req, res, next) => {

@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const { bookModel } = require('../components/book/book.model');
+const { customerModel } = require('../components/customer/customer.model');
 const { invalidTokensModel } = require('../components/miscellaneous/miscellaneous.model');
 const { sellerModel } = require('../components/seller/seller.model');
 require('dotenv').config();
@@ -30,10 +31,12 @@ db.sequelize = sequelize;
 const InvalidToken = invalidTokensModel(sequelize);
 const Seller = sellerModel(sequelize);
 const Book = bookModel(sequelize);
+const Customer = customerModel(sequelize);
 
 db.InvalidToken = InvalidToken;
 db.Seller = Seller;
 db.Book = Book;
+db.Customer = Customer;
 
 // ASSOCIATIONS
 db.Seller.hasMany(db.Book);

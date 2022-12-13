@@ -1,5 +1,5 @@
 const { errorFunction } = require('../../common/common.utils');
-const { getBooksBySellerService } = require('./book.service');
+const { getBooksBySellerService, deleteBookService } = require('./book.service');
 const { addBookUtils } = require('./book.utils');
 
 const addBookController = async (req, res) => {
@@ -21,7 +21,16 @@ const getBooksByIdController = async (req, res) => {
     return res.status(200).json(errorFunction(false, 'Success', getResult?.books));
 }
 
+const deleteBookController = async (req, res) => {
+    const deleteResult = await deleteBookService(Number(req.params?.id));
+    if (deleteResult.success === false) {
+        return res.status(400).json(errorFunction(true, deleteResult?.message));
+    }
+    return res.status(200).json(errorFunction(false, 'Deleted successfully'));
+}
+
 module.exports = {
     addBookController,
-    getBooksByIdController
+    getBooksByIdController,
+    deleteBookController
 };
